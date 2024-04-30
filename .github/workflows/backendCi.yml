@@ -1,0 +1,31 @@
+name: 'Frontend Continuous Integration'
+on:
+  workflow_dispatch:
+  
+  pull_request:
+    branches:
+      - main
+
+env:
+  PYTHON_VERSION: 3.10
+
+jobs:
+  lint:
+    name: 'Lint'
+    runs-on: ubuntu-latest   # Use the latest Ubuntu runner
+
+    steps:
+      # Check out the code to the runner
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup Python
+      - name: Install Python, pipenv and Pipfile packages
+        uses: palewire/install-python-pipenv-pipfile@v3
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          cd backend && pipenv install
+          cd backend && flake8 .
