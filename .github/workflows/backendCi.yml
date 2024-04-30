@@ -28,7 +28,6 @@ jobs:
       
       - name: Install dependencies
         run: |
-          cd backend && install pipenv
           cd backend && curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
           cd backend && pipenv install
 
