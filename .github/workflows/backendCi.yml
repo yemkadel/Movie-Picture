@@ -30,6 +30,7 @@ jobs:
         run: |
           cd backend && curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
           pipenv install
+          pipenv shell
 
       - name: Lint using flake8
         run: cd backend && flake8 .
