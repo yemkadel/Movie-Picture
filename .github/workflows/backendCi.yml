@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd backend && curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-          cd backend && pipenv install
+          pipenv install
 
       - name: Lint using flake8
         run: cd backend && flake8 .
