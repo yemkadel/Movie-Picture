@@ -40,3 +40,26 @@ jobs:
 
       - name: Lint using flake8
         run: cd backend && pipenv run flake8 .
+
+  test:
+    name: 'Test'
+    runs-on: ubuntu-latest   # Use the latest Ubuntu runner
+
+    steps:
+      # Check out the code to the runner
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup Python
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pipenv' 
+      
+      - name: Install dependencies
+        run: |
+          cd backend && curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+
+      - name: Run test
+        run: cd backend && test_app

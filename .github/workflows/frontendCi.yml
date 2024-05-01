@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  NODE_VERSION: '22.0.0'
+
 
 jobs:
   lint:
@@ -21,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: ${{ env.NODE_VERSION }}
       
       - name: Install npm dependency
         run: cd frontend && npm ci
@@ -42,7 +45,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: ${{ env.NODE_VERSION }}
       
       - name: Install npm dependency
         run: cd frontend && npm ci
@@ -64,7 +67,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: ${{ env.NODE_VERSION }}
       
       - name: Install npm dependency
         run: cd frontend && npm ci
