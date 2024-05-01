@@ -62,4 +62,4 @@ jobs:
           cd backend && curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
 
       - name: Run test
-        run: cd backend && test_app
+        run: cd backend && python test_app.py
